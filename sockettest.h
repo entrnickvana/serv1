@@ -5,6 +5,9 @@
 #include <QTcpSocket>
 #include <QDebug>
 #include <iostream>
+#include <QString>
+
+
 class sockettest : public QObject
 {
     Q_OBJECT
