@@ -20,8 +20,12 @@ void sockettest::Connect()
     std::cout<<"Enter the IP ADDR";
     qtin >> Qip_addr;
 
+    qDebug() << "You input the following ip address: " << Qip_addr << "\nYou input the following: " << clientport;
+
     socket->connectToHost(Qip_addr,clientport);
-    if(socket->waitForConnected(30000))
+    qDebug() << "\nAttempted to connectToHost\n";
+
+    if(socket->waitForConnected(-1))
     {
         qDebug()<<"Connected";
         socket->write("start");
@@ -32,6 +36,7 @@ void sockettest::Connect()
     {
         qDebug()<<"Not connected";
     }
+
     socket->waitForReadyRead(1000);
     if(socket->readLine()=="start")
     {
